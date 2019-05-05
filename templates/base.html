@@ -3,22 +3,25 @@
 <html lang="en">
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     </head>
     <body>
         <nav>
-            {% static 'main.css' %}
-            <ur>
-                <li><a href="{% url 'add_meme' %}">Add new meme</a></li>
-                <li><a href="{% url 'add_meme' %}">Add new meme</a></li>
-                <li><a href="{% url 'add_meme' %}">Add new meme</a></li>
-            </ur>
-
+            <div class="space-between-row">
+                <a href="/">Django_meme</a>
+                <a class="add-button" href="{% url 'add_meme' %}"><i class="material-icons">add</i></a>
+            </div>
+            <ul>
+                <li active><a href="#">LATEST</a></li>
+                <li><a href="#">WAITING ROOM</a></li>
+            </ul>
         </nav>
         <div class="content">
             {% block content %}
             {% endblock %}
         </div>
+
     </body>
 </html>
 
