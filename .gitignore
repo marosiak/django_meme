@@ -1,0 +1,16 @@
+
+\.idea/
+
+*.sqlite3
+
+__pycache__/
+
+media/
+
+meme/migrations/
+
+*.lock
+
+django_meme/__init__\.py
+
+meme/__init__\.py

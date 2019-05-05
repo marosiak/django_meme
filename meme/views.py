@@ -5,7 +5,7 @@ from .models import Meme
 # Create your views here.
 def meme_list(request):
     memes = Meme.objects.all()
-    return render(request, 'meme_list.html', {'memes': memes})
+    return render(request, 'meme/meme_list.html', {'memes': memes})
 
 
 def add_meme(request):
@@ -15,6 +15,6 @@ def add_meme(request):
             if img:
                 Meme.objects.create(file=img, title=request.POST.get("title", ""), author=request.user)
                 return redirect('meme_list')
-        return render(request, 'meme_add.html')
+        return render(request, 'meme/meme_add.html')
     else:
         return redirect('login')

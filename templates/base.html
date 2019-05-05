@@ -1,6 +1,24 @@
+<!doctype html>
 {% load static %}
-<nav style="width:100%; height: 35px; background-color: red">
-    <a href="{% url 'add_meme' %}">Add new meme</a>
-</nav>
-{% block content %}
-{% endblock %}
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    </head>
+    <body>
+        <nav>
+            {% static 'main.css' %}
+            <ur>
+                <li><a href="{% url 'add_meme' %}">Add new meme</a></li>
+                <li><a href="{% url 'add_meme' %}">Add new meme</a></li>
+                <li><a href="{% url 'add_meme' %}">Add new meme</a></li>
+            </ur>
+
+        </nav>
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
+
