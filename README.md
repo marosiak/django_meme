@@ -10,6 +10,10 @@ You can test this website on https://maciejrosiak.me
 
 # Get started
 
+#### Setup sacret_key.txt
+You have to create **sacret_key.txt** file in the project directory,
+at the same level as **manage.py** and fill it with your sacret key which should be atleast 50 characters long.
+
 #### Install pipenv
 ``` shell
 pip install pipenv
@@ -20,16 +24,20 @@ pip install pipenv
 pipenv install
 ```
 
-#### Setup sacret_key.txt
-You have to create **sacret_key.txt** file in the project directory,
-at the same level as **manage.py** and fill it with your sacret key which should be atleast 50 characters long.
-
-#### Run dev server
-``` shell
+#### Enter virtual env
+``` shell 
 pipenv shell
-python manage.py runserver
 ```
 
+#### Make migrations
+``` shell 
+python manage.py makemigrations
+python manage.py migrate
+```
+#### Run dev server
+``` shell
+python manage.py runserver
+```
 **If you want to deploy this project, you should check this out:** https://docs.djangoproject.com/en/2.2/howto/deployment/
 
 
