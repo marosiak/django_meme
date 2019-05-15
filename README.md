@@ -1,5 +1,5 @@
 # django_meme
-This is meme website wrote in django for portfolio purposes
+This is meme website written in django for portfolio purposes
 
 You can test this website on https://maciejrosiak.me
 # Requirements
