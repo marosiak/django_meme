@@ -14,3 +14,7 @@ meme/migrations/
 django_meme/__init__\.py
 
 meme/__init__\.py
+
+accounts/__init__\.py
+
+sacret_key\.txt

@@ -1,0 +1,96 @@
+.auth-dialog {
+  position: absolute;
+  left: calc(50% - 450px / 2);
+  top: calc(15%);
+  width: 450px;
+  height: 557px;
+  padding-bottom: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  user-select: none;
+  .auth-header {
+    color: $primary-color;
+    width: 100%;
+    text-align: center;
+    font-size: 32pt;
+    font-weight: 300;
+    letter-spacing: 1.31px;
+  }
+  .auth-content {
+    display: flex; flex-direction: column; place-content: space-between;
+    .auth-fields {
+      display: flex;
+      flex-direction: column;
+      margin-top: 44px;
+      margin-bottom: 19px;
+      input {
+        height: 60px;
+        margin-bottom: 12px;
+        border: 0;
+        background-color: #EBEBEB;
+        padding-left: 33px;
+        font-size: 15pt;
+        outline: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+      }
+      input:hover {
+        background-color: darken(#EBEBEB, 3%);
+      }
+    }
+    .auth-button-container {
+      width: 100%;
+      display: flex; justify-content: center; align-items: flex-start; flex-direction: column;
+
+      input[type="submit"] {
+        border: 0;
+        outline: none;
+        cursor: pointer;
+      }
+      .auth-button {
+        width: 100%;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: $primary-color;
+        color: white;
+        font-size: 18pt;
+        font-weight: 300;
+        text-decoration: none;
+      }
+      .checkbox {
+        margin-top: 5px;
+        margin-bottom: 18px;
+      }
+      .auth-button:hover {
+        background-color: darken($primary-color, 10%)
+      }
+
+      .auth-create-acc {
+        font-size: 15pt;
+        font-weight: 400;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        color: #A1A1A1;
+        div {
+          padding-top: 26px;
+        }
+        a {
+          padding-top: 4px;
+          padding-bottom: 4px;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+  .auth-error {
+    padding-top: 14px;
+    padding-bottom: 12px;
+    font-size: 17pt;
+    font-weight: 300;
+    width: 100%;
+    color: red;
+  }
+}

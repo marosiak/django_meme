@@ -1,6 +1,35 @@
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+{% load static %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<div class="auth-page">
+    <div class="auth-dialog">
+        <div class="auth-header">Authorization</div>
+        <div class="auth-content">
+            <form method="post">
+                {% csrf_token %}
+                <div class="auth-fields">
+                    {% for field in form %}
+                        <input type="{{ field.name }}" name="{{ field.name }}" placeholder={{ field.label }}>
+                    {% endfor %}
+                </div>
+                <div class="auth-button-container" style="align-items: center;flex-direction: column;">
+                    {% if form.errors %}
+                        <div class="auth-error">Please enter correct values</div>
+                    {% endif %}
+                    <input type="submit" class="auth-button" value="Login">
+                    <div class="auth-create-acc">
+                        <div>Don't you have an account?</div>
+                        <a href="{% url 'signup' %}">Sign up</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

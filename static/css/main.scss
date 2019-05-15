@@ -1,5 +1,8 @@
 @import "variables";
+
 @import "components/navigation";
+@import "components/auth-dialog";
+@import "components/checkbox";
 
 html, body {
   margin: 0;
@@ -9,7 +12,7 @@ html, body {
 }
 .content {
   position: absolute;
-  top: 116px;
+  top: 116px;  
   height: 100%;
   width: 100%;
   overflow-y: scroll;
