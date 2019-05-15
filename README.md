@@ -1,15 +1,29 @@
 # django_meme
-This is meme website wrote in django with features such as 
-auto nudity validator
+This is meme website wrote in django for portfolio purposes
 
-## Get started
+You can test this website on https://maciejrosiak.me
+# Requirements
 
-`I'll write tutorial here`
+`Python >= 3.7`
 
-DJANGO_SACRET_KEY
+`Pip >= 19.1`
 
-## Requirements
-All following requirements are in `requirements.txt`
+# Get started
 
-`Django~=2.2.1`
+#### Install pipenv
+`pip install pipenv`
+
+#### Install dependencies and create virtual env
+`pipenv install`
+#### Setup sacret_key.txt
+You have to create **sacret_key.txt** file in the project directory,
+at the same level as **manage.py** and fill it with your sacret key which should be atleast 50 characters long.
+
+#### Run dev server
+`pipenv shell`
+
+`python manage.py runserver`
+
+**If you want to deploy this project, you should check this out:** https://docs.djangoproject.com/en/2.2/howto/deployment/
+
 
