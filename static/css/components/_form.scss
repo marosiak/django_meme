@@ -1,4 +1,4 @@
-.auth-dialog {
+.form {
   position: absolute;
   left: calc(50% - 450px / 2);
   top: calc(15%);
@@ -8,7 +8,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   user-select: none;
-  .auth-header {
+  .form-header {
     color: $primary-color;
     width: 100%;
     text-align: center;
@@ -16,29 +16,19 @@
     font-weight: 300;
     letter-spacing: 1.31px;
   }
-  .auth-content {
+  .form-content {
     display: flex; flex-direction: column; place-content: space-between;
-    .auth-fields {
+    .form-fields {
       display: flex;
       flex-direction: column;
       margin-top: 44px;
       margin-bottom: 19px;
-      input {
-        height: 60px;
-        margin-bottom: 12px;
-        border: 0;
-        background-color: #EBEBEB;
-        padding-left: 33px;
-        font-size: 15pt;
-        outline: none;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-      }
-      input:hover {
-        background-color: darken(#EBEBEB, 3%);
+      .upload-field {
+        width: 100%;
+        height: 200px;
       }
     }
-    .auth-button-container {
+    .form-button-container {
       width: 100%;
       display: flex; justify-content: center; align-items: flex-start; flex-direction: column;
 
@@ -47,7 +37,7 @@
         outline: none;
         cursor: pointer;
       }
-      .auth-button {
+      .form-button {
         width: 100%;
         padding-top: 16px;
         padding-bottom: 16px;
@@ -63,11 +53,11 @@
         margin-top: 5px;
         margin-bottom: 18px;
       }
-      .auth-button:hover {
+      .form-button:hover {
         background-color: darken($primary-color, 10%)
       }
 
-      .auth-create-acc {
+      .form-create-acc {
         font-size: 15pt;
         font-weight: 400;
         text-align: center;
@@ -85,7 +75,7 @@
       }
     }
   }
-  .auth-error {
+  .form-error {
     padding-top: 14px;
     padding-bottom: 12px;
     font-size: 17pt;

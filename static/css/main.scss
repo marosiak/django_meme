@@ -1,8 +1,10 @@
 @import "variables";
 
 @import "components/navigation";
-@import "components/auth-dialog";
+@import "components/form";
 @import "components/checkbox";
+@import "components/text-field";
+@import "components/upload-field";
 
 html, body {
   margin: 0;

@@ -6,23 +6,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-<div class="auth-page">
-    <div class="auth-dialog">
-        <div class="auth-header">Authorization</div>
-        <div class="auth-content">
+<div class="form-page">
+    <div class="form">
+        <div class="form-header">Authorization</div>
+        <div class="form-content">
             <form method="post">
                 {% csrf_token %}
-                <div class="auth-fields">
+                <div class="form-fields">
                     {% for field in form %}
-                        <input type="{{ field.name }}" name="{{ field.name }}" placeholder={{ field.label }}>
+                        <input class="text-field" type="{{ field.name }}" name="{{ field.name }}" placeholder={{ field.label }}>
                     {% endfor %}
                 </div>
-                <div class="auth-button-container" style="align-items: center;flex-direction: column;">
+                <div class="form-button-container" style="align-items: center;flex-direction: column;">
                     {% if form.errors %}
-                        <div class="auth-error">Please enter correct values</div>
+                        <div class="form-error">Please enter correct values</div>
                     {% endif %}
-                    <input type="submit" class="auth-button" value="Login">
-                    <div class="auth-create-acc">
+                    <input type="submit" class="form-button" value="Login">
+                    <div class="form-create-acc">
                         <div>Don't you have an account?</div>
                         <a href="{% url 'signup' %}">Sign up</a>
                     </div>

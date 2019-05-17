@@ -72,7 +72,7 @@ nav ul li:hover {
   opacity: 0.6;
 }
 
-.auth-dialog {
+.form {
   position: absolute;
   left: calc(50% - 450px / 2);
   top: calc(15%);
@@ -83,7 +83,7 @@ nav ul li:hover {
   font-weight: 100;
   user-select: none;
 }
-.auth-dialog .auth-header {
+.form .form-header {
   color: #3BA3FB;
   width: 100%;
   text-align: center;
@@ -91,44 +91,34 @@ nav ul li:hover {
   font-weight: 300;
   letter-spacing: 1.31px;
 }
-.auth-dialog .auth-content {
+.form .form-content {
   display: flex;
   flex-direction: column;
   place-content: space-between;
 }
-.auth-dialog .auth-content .auth-fields {
+.form .form-content .form-fields {
   display: flex;
   flex-direction: column;
   margin-top: 44px;
   margin-bottom: 19px;
 }
-.auth-dialog .auth-content .auth-fields input {
-  height: 60px;
-  margin-bottom: 12px;
-  border: 0;
-  background-color: #EBEBEB;
-  padding-left: 33px;
-  font-size: 15pt;
-  outline: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+.form .form-content .form-fields .upload-field {
+  width: 100%;
+  height: 200px;
 }
-.auth-dialog .auth-content .auth-fields input:hover {
-  background-color: #e3e3e3;
-}
-.auth-dialog .auth-content .auth-button-container {
+.form .form-content .form-button-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 }
-.auth-dialog .auth-content .auth-button-container input[type=submit] {
+.form .form-content .form-button-container input[type=submit] {
   border: 0;
   outline: none;
   cursor: pointer;
 }
-.auth-dialog .auth-content .auth-button-container .auth-button {
+.form .form-content .form-button-container .form-button {
   width: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -140,14 +130,14 @@ nav ul li:hover {
   font-weight: 300;
   text-decoration: none;
 }
-.auth-dialog .auth-content .auth-button-container .checkbox {
+.form .form-content .form-button-container .checkbox {
   margin-top: 5px;
   margin-bottom: 18px;
 }
-.auth-dialog .auth-content .auth-button-container .auth-button:hover {
+.form .form-content .form-button-container .form-button:hover {
   background-color: #098cfa;
 }
-.auth-dialog .auth-content .auth-button-container .auth-create-acc {
+.form .form-content .form-button-container .form-create-acc {
   font-size: 15pt;
   font-weight: 400;
   text-align: center;
@@ -155,15 +145,15 @@ nav ul li:hover {
   flex-direction: column;
   color: #A1A1A1;
 }
-.auth-dialog .auth-content .auth-button-container .auth-create-acc div {
+.form .form-content .form-button-container .form-create-acc div {
   padding-top: 26px;
 }
-.auth-dialog .auth-content .auth-button-container .auth-create-acc a {
+.form .form-content .form-button-container .form-create-acc a {
   padding-top: 4px;
   padding-bottom: 4px;
   color: #3BA3FB;
 }
-.auth-dialog .auth-error {
+.form .form-error {
   padding-top: 14px;
   padding-bottom: 12px;
   font-size: 17pt;
@@ -232,6 +222,22 @@ nav ul li:hover {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.text-field {
+  height: 60px;
+  margin-bottom: 12px;
+  border: 0;
+  background-color: #EBEBEB;
+  padding-left: 33px;
+  font-size: 15pt;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.text-field:hover {
+  background-color: #e3e3e3;
 }
 
 html, body {

@@ -1,0 +1,15 @@
+.text-field {
+  height: 60px;
+  margin-bottom: 12px;
+  border: 0;
+  background-color: #EBEBEB;
+  padding-left: 33px;
+  font-size: 15pt;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.text-field:hover {
+  background-color: darken(#EBEBEB, 3%);
+}

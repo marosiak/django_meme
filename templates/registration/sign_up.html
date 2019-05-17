@@ -6,45 +6,45 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-<div class="auth-page">
-    {#        <div class="auth-dialog">#}
-    {#            <div class="auth-header">Authorization</div>#}
-    {#            <div class="auth-content">#}
-    {#                <div class="auth-fields">#}
+<div class="form-page">
+    {#        <div class="form-dialog">#}
+    {#            <div class="form-header">formorization</div>#}
+    {#            <div class="form-content">#}
+    {#                <div class="form-fields">#}
     {#                    <input type="text" placeholder="Username">#}
     {#                    <input type="password" placeholder="Password">#}
     {#                    <input type="password" placeholder="Confirm Password">#}
     {#                </div>#}
-    {#                <div class="auth-button-container">#}
+    {#                <div class="form-button-container">#}
     {#                    <label class="checkbox" style="width: 100%;">I Agree to hire you#}
     {#                      <input type="checkbox" checked="checked">#}
     {#                      <span class="checkmark"></span>#}
     {#                    </label>#}
     {##}
-    {#                    <a class="auth-button" href="#">Sign Up</a>#}
+    {#                    <a class="form-button" href="#">Sign Up</a>#}
     {#                </div>#}
     {#            </div>#}
     {#        </div>#}
 
 
-    <div class="auth-dialog">
-        <div class="auth-header">Authorization</div>
-        <div class="auth-content">
+    <div class="form">
+        <div class="form-header">Authorization</div>
+        <div class="form-content">
             <form action="/accounts/signup/" method="post">
                 {% csrf_token %}
-                <div class="auth-fields">
-                    <input type="text" name="username" placeholder="Username">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="password" name="password_confirm" placeholder="Confirm Password">
+                <div class="form-fields">
+                    <input class="text-field" type="text" name="username" placeholder="Username">
+                    <input class="text-field" type="password" name="password" placeholder="Password">
+                    <input class="text-field" type="password" name="password_confirm" placeholder="Confirm Password">
                 </div>
-                <div class="auth-button-container">
+                <div class="form-button-container">
                     <label class="checkbox" style="width: 100%;">I Agree to hire you
                         <input type="checkbox" checked="checked" name="checkbox">
                         <span class="checkmark"></span>
                     </label>
-                    <input type="submit" class="auth-button" value="Sign Up">
+                    <input type="submit" class="form-button" value="Sign Up">
                     {% if error %}
-                        <div class="auth-error">{{ error }}</div>
+                        <div class="form-error">{{ error }}</div>
                     {% endif %}
                 </div>
             </form>

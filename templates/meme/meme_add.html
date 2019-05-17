@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <form method='POST' enctype="multipart/form-data" action={% url 'add_meme' %} >
+    <form class="file-form" method='POST' enctype="multipart/form-data" action={% url 'add_meme' %}>
         {% csrf_token %}
-        <input type="file" name="image">
-        Title: <input type="text" name="title">
-        <input type="submit">
+        <div class="form">
+            <div class="form-header">POST MEME</div>
+            <div class="form-content">
+                <div class="form-fields">
+                    <input class="text-field" placeholder="Title" type="text">
+                    <input type="file" name="image">
+
+                </div>
+                <div class="form-button-container">
+                    <input type="submit" class="form-button" value="SUBMIT">
+                </div>
+            </div>
+        </div>
+        </div>
     </form>
 {% endblock %}
