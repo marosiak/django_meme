@@ -1,6 +1,6 @@
 nav {
-  transition: all ease 0.3s;
-  width: 100%;
+  transition: all ease 0.1s;
+  width: 100vw;
   height: 116px;
   background-color: #3BA3FB;
   color: white;
@@ -9,18 +9,16 @@ nav {
   user-select: none;
 }
 nav .space-between-row {
-  position: absolute;
-  left: 19px;
-  right: 19px;
-  top: 18px;
+  transition: all ease 0.1s;
+  height: 100%;
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 }
 nav .space-between-row a {
-  margin: 0;
-  padding: 0;
+  transition: all ease 0.1s;
+  margin-top: 24px;
+  margin-left: 12px;
   font-size: 18pt;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -28,6 +26,7 @@ nav .space-between-row a {
   text-decoration: none;
 }
 nav .space-between-row a:hover {
+  transition: all ease 0.1s;
   opacity: 0.7;
 }
 nav .space-between-row .add-button {
@@ -38,14 +37,18 @@ nav .space-between-row .add-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 19px;
+  margin-right: 12px;
 }
 nav .space-between-row .add-button i {
+  transition: all ease 0.1s;
   font-size: 24pt;
 }
 nav .space-between-row .add-button:hover {
   opacity: 0.5;
 }
 nav ul {
+  transition: all ease 0.1s;
   position: absolute;
   padding: 0;
   margin-bottom: 0;
@@ -54,6 +57,7 @@ nav ul {
   display: flex;
 }
 nav ul li {
+  transition: all ease 0.1s;
   margin-right: 36px;
   list-style-type: none;
   height: 36px;
@@ -76,12 +80,12 @@ nav ul li:hover {
 nav.shrink {
   height: 50px;
 }
-nav.shrink .space-between-row {
-  bottom: 5px;
-  top: 5px;
-}
 nav.shrink .space-between-row a {
+  margin-top: 15px;
   font-size: 13pt;
+}
+nav.shrink .space-between-row .add-button {
+  margin-top: 7px;
 }
 nav.shrink .space-between-row i {
   font-size: 20pt;
@@ -293,7 +297,7 @@ html, body {
 }
 
 .content {
-  transition: all ease 0.3s;
+  transition: all ease 0.1s;
   position: absolute;
   top: 116px;
   bottom: 0px;

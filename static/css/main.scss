@@ -1,14 +1,12 @@
 @import "variables";
+@import "animations";
+
 
 @import "components/navigation";
 @import "components/form";
 @import "components/checkbox";
 @import "components/text-field";
 @import "components/upload-field";
-
-@function property-value($property, $selector: null) {
-    @return $magic;
-}
 
 html, body {
   margin: 0;
@@ -17,7 +15,7 @@ html, body {
   overflow-y: hidden;
 }
 .content {
-  transition: all ease .3s;
+  transition: $nav-transition;
   position: absolute;
   top: 116px;
   bottom: 0px;
