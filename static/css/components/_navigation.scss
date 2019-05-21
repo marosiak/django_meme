@@ -1,4 +1,5 @@
 nav {
+  transition: all ease .3s;
   width: 100%;
   height: 116px;
   background-color: $primary-color;
@@ -64,6 +65,27 @@ nav {
     }
     li:hover {
       opacity: 0.6;
+    }
+  }
+}
+
+nav.shrink {
+  height: 50px;
+  .space-between-row {
+    bottom: 5px;
+    top: 5px;
+    a {
+      font-size: 13pt;
+    }
+    i {
+      font-size: 20pt;
+    }
+  }
+  ul {
+    left: 180px;
+    font-size: 12pt;
+    li {
+      height: 28px;
     }
   }
 }

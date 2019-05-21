@@ -6,6 +6,10 @@
 @import "components/text-field";
 @import "components/upload-field";
 
+@function property-value($property, $selector: null) {
+    @return $magic;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -13,9 +17,13 @@ html, body {
   overflow-y: hidden;
 }
 .content {
+  transition: all ease .3s;
   position: absolute;
-  top: 116px;  
-  height: 100%;
+  top: 116px;
+  bottom: 0px;
   width: 100%;
   overflow-y: scroll;
+}
+.content.shrink {
+  top: 50px;
 }

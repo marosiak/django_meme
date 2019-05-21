@@ -1,0 +1,28 @@
+.upload-field {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  padding-bottom: 12px;
+  .upload-button {
+    width: 30%;
+    padding: 10px 10px;
+    color: white;
+    background-color: $primary-color;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+  }
+
+  .upload-button:hover {
+    background-color: lighten($primary-color, 5%);
+  }
+
+  .upload-text {
+    background-color: darken($primary-color, 11%);
+    color: white;
+    width: 70%;
+    padding: 8px 15px 8px 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

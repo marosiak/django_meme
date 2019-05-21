@@ -13,7 +13,14 @@ def meme_list(request):
 def add_meme(request):
     if request.POST:
         img = request.FILES.get('image', False)
-        if img:
-            Meme.objects.create(file=img, title=request.POST.get("title", ""), author=request.user)
-            return redirect('meme_list')
+        title = request.POST.get('title', False)
+        if title:
+            if img:
+                Meme.objects.create(file=img, title=title, author=request.user)
+                return redirect('meme_list')
+            else:
+                return render(request, 'meme/meme_add.html', {'error': 'Please select file'})
+        else:
+            return render(request, 'meme/meme_add.html', {'error': 'Please enter title'})
+
     return render(request, 'meme/meme_add.html')
