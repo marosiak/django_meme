@@ -92,7 +92,7 @@ nav.shrink {
     }
   }
   ul {
-    left: 29vw;
+    left: calc(150px + 1vw);
     font-size: 12pt;
     @include phone {
       right: 1vw;

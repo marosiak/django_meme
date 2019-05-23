@@ -1,13 +1,23 @@
+.form-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
 .form {
   position: absolute;
-  left: calc(50% - 450px / 2);
-  top: calc(15%);
-  width: 450px;
-  height: 557px;
+  top: calc(15vh);
+  width: 50vw;
+  max-width: 500px;
   padding-bottom: 8px;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   user-select: none;
+  @include tablet {
+    width: 90vw;
+  }
+
   .form-header {
     color: $primary-color;
     width: 100%;
@@ -16,23 +26,32 @@
     font-weight: 300;
     letter-spacing: 1.31px;
   }
+
   .form-content {
-    display: flex; flex-direction: column; place-content: space-between;
+    display: flex;
+    flex-direction: column;
+    place-content: space-between;
+
     .form-fields {
       display: flex;
       flex-direction: column;
       margin-top: 44px;
       margin-bottom: 19px;
     }
+
     .form-button-container {
       width: 100%;
-      display: flex; justify-content: center; align-items: flex-start; flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
 
       input[type="submit"] {
         border: 0;
         outline: none;
         cursor: pointer;
       }
+
       .form-button {
         width: 100%;
         padding-top: 16px;
@@ -45,10 +64,12 @@
         font-weight: 300;
         text-decoration: none;
       }
+
       .checkbox {
         margin-top: 5px;
         margin-bottom: 18px;
       }
+
       .form-button:hover {
         background-color: darken($primary-color, 10%)
       }
@@ -60,9 +81,11 @@
         display: flex;
         flex-direction: column;
         color: #A1A1A1;
+
         div {
           padding-top: 26px;
         }
+
         a {
           padding-top: 4px;
           padding-bottom: 4px;
@@ -71,6 +94,7 @@
       }
     }
   }
+
   .form-error {
     padding-top: 14px;
     padding-bottom: 12px;
