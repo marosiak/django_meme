@@ -1,3 +1,40 @@
+.circle-add-button {
+  width: 16vw;
+  height: 16vw;
+  background-color: #3BA3FB;
+  z-index: 5;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  visibility: hidden;
+  text-decoration: none;
+  outline: none;
+  -webkit-box-shadow: 0px 0px 18px -5px black;
+  -moz-box-shadow: 0px 0px 18px -5px black;
+  box-shadow: 0px 0px 18px -5px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle-add-button i {
+  font-size: 7vw;
+  color: white;
+}
+.circle-add-button:hover {
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+  -moz-box-shadow: 0px 0px 10px -5px black;
+  box-shadow: 0px 0px 10px -5px black;
+}
+.circle-add-button:hover i {
+  opacity: 0.5;
+}
+@media only screen and (max-width: 480px) {
+  .circle-add-button {
+    border-radius: 100%;
+    visibility: visible;
+  }
+}
+
 nav {
   transition: all ease 0.1s;
   width: 100vw;
@@ -40,6 +77,11 @@ nav .space-between-row .add-button {
   margin-top: 19px;
   margin-right: 12px;
 }
+@media only screen and (max-width: 480px) {
+  nav .space-between-row .add-button {
+    visibility: hidden;
+  }
+}
 nav .space-between-row .add-button i {
   transition: all ease 0.1s;
   font-size: 24pt;
@@ -52,7 +94,7 @@ nav ul {
   position: absolute;
   padding: 0;
   margin-bottom: 0;
-  left: 168px;
+  left: 17vw;
   bottom: 0;
   display: flex;
 }
@@ -91,8 +133,14 @@ nav.shrink .space-between-row i {
   font-size: 20pt;
 }
 nav.shrink ul {
-  left: 180px;
+  left: 29vw;
   font-size: 12pt;
+}
+@media only screen and (max-width: 480px) {
+  nav.shrink ul {
+    right: 1vw;
+    left: unset;
+  }
 }
 nav.shrink ul li {
   height: 28px;

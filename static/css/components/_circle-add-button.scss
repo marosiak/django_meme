@@ -1,0 +1,41 @@
+@mixin circle-button-shadow($value) {
+  $circle-add-button-shadow-color: rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 0px 0px $value -5px $circle-add-button-shadow-color;
+  -moz-box-shadow: 0px 0px $value -5px $circle-add-button-shadow-color;
+  box-shadow: 0px 0px $value -5px $circle-add-button-shadow-color;
+}
+
+.circle-add-button {
+  width: 16vw;
+  height: 16vw;
+  background-color: $primary-color;
+  z-index: 5;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  visibility: hidden;
+  text-decoration: none;
+  outline: none;
+  @include circle-button-shadow(18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 7vw;
+    color: white;
+  }
+
+  &:hover {
+    i {
+      opacity: .5;
+    }
+
+    @include circle-button-shadow(10px);
+  }
+
+  @include phone {
+    border-radius: 100%;
+    visibility: visible;
+  }
+}
