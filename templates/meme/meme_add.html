@@ -1,42 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form method='POST' enctype="multipart/form-data" action={% url 'add_meme' %}>
-        {% csrf_token %}
-        <div class="form" >
-            <div class="form-header">POST MEME</div>
-            <div class="form-content">
-                <div class="form-fields">
-                    <input class="text-field" placeholder="Title" name="title" type="text">
-                    <div class="upload-field">
-                        <input type="file" name="image" id="real-file" hidden="hidden" />
-                        <button class="upload-button" type="button" id="upload-button">CHOOSE A FILE</button>
-                        <span class="upload-text" id="upload-text">No file chosen, yet.</span>
-                    </div>
+    <script>
+        $('.add-button').addClass('hidden');
+        $('.circle-add-button').addClass('hidden');
+    </script>
+    <div class="form-page">
+        <form method='POST' enctype="multipart/form-data" action={% url 'add_meme' %}>
+            {% csrf_token %}
+            <div class="form">
+                <div class="form-header">POST MEME</div>
+                <div class="form-content">
+                    <div class="form-fields">
+                        <input class="text-field" placeholder="Title" name="title" type="text">
+                        <div class="upload-field">
+                            <input type="file" name="image" id="real-file" hidden="hidden"/>
+                            <button class="upload-button" type="button" id="upload-button">CHOOSE A FILE</button>
+                            <span class="upload-text" id="upload-text">No file chosen, yet.</span>
+                        </div>
 
-                </div>
-                <div class="form-button-container">
-                    <input type="submit" class="form-button" value="SUBMIT">
-                    {% if error %}
-                        <div class="form-error">{{ error }}</div>
-                    {% endif %}
+                    </div>
+                    <div class="form-button-container">
+                        <input type="submit" class="form-button" value="SUBMIT">
+                        {% if error %}
+                            <div class="form-error">{{ error }}</div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
-    </form>
+        </form>
+    </div>
     <script> // some js shit to customize file button
     const realFileBtn = document.getElementById("real-file");
     const customBtn = document.getElementById("upload-button");
     const customTxt = document.getElementById("upload-text");
-    customBtn.addEventListener("click", function() {
-      realFileBtn.click();
+    customBtn.addEventListener("click", function () {
+        realFileBtn.click();
     });
-    realFileBtn.addEventListener("change", function() {
-      if (realFileBtn.value) {
-          customTxt.innerHTML = realFileBtn.value
-      } else {
-        customTxt.innerHTML = "No file chosen, yet.";
-      }
+    realFileBtn.addEventListener("change", function () {
+        if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value
+        } else {
+            customTxt.innerHTML = "No file chosen, yet.";
+        }
     });
     </script>
 {% endblock %}

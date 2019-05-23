@@ -152,20 +152,25 @@ nav.shrink ul li {
   height: 100%;
   justify-content: center;
 }
+@media only screen and (max-width: 910px) {
+  .form-page {
+    align-items: center;
+  }
+}
 
 .form {
-  position: absolute;
-  top: calc(15vh);
   width: 50vw;
   max-width: 500px;
   padding-bottom: 8px;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   user-select: none;
+  margin-top: 15vh;
 }
-@media only screen and (max-width: 890px) {
+@media only screen and (max-width: 910px) {
   .form {
-    width: 90vw;
+    width: 95vw;
+    margin-top: unset;
   }
 }
 .form .form-header {
@@ -176,6 +181,16 @@ nav.shrink ul li {
   font-weight: 300;
   letter-spacing: 1.31px;
 }
+@media only screen and (max-width: 910px) {
+  .form .form-header {
+    font-size: 39pt;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .form .form-header {
+    font-size: 10vw;
+  }
+}
 .form .form-content {
   display: flex;
   flex-direction: column;
@@ -184,15 +199,15 @@ nav.shrink ul li {
 .form .form-content .form-fields {
   display: flex;
   flex-direction: column;
-  margin-top: 44px;
-  margin-bottom: 19px;
+  margin: 44px 18px 19px;
 }
 .form .form-content .form-button-container {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  margin-left: 18px;
+  margin-right: 18px;
 }
 .form .form-content .form-button-container input[type=submit] {
   border: 0;
@@ -211,8 +226,13 @@ nav.shrink ul li {
   font-weight: 300;
   text-decoration: none;
 }
+@media only screen and (max-width: 910px) {
+  .form .form-content .form-button-container .form-button {
+    font-size: 13pt;
+  }
+}
 .form .form-content .form-button-container .checkbox {
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 18px;
 }
 .form .form-content .form-button-container .form-button:hover {
@@ -325,16 +345,27 @@ nav.shrink ul li {
   display: flex;
   align-items: center;
   padding-top: 2px;
-  padding-bottom: 12px;
+  padding-bottom: 0px;
+}
+@media only screen and (max-width: 480px) {
+  .upload-field {
+    flex-direction: column-reverse;
+  }
 }
 .upload-field .upload-button {
-  width: 30%;
+  width: 35%;
   padding: 10px 10px;
   color: white;
   background-color: #3BA3FB;
   cursor: pointer;
   border: 0;
   outline: none;
+}
+@media only screen and (max-width: 480px) {
+  .upload-field .upload-button {
+    width: 100%;
+    padding: 18px 10px;
+  }
 }
 .upload-field .upload-button:hover {
   background-color: #54affc;
@@ -347,12 +378,26 @@ nav.shrink ul li {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+@media only screen and (max-width: 480px) {
+  .upload-field .upload-text {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    background: none;
+    color: #252525;
+    font-weight: 300;
+  }
+}
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow-y: hidden;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .content {

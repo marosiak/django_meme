@@ -30,7 +30,6 @@
         let navbar = $('nav');
         let content = $('.content');
         $(content).scroll(function () {
-            console.log("q");
             if ($(content).scrollTop() <= 40) {
                 navbar.removeClass('shrink');
                 content.removeClass('shrink');
