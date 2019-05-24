@@ -1,7 +1,7 @@
 # django_meme
 This is meme website written in django for portfolio purposes
 
-You can test this website on https://maciejrosiak.me
+You can test this website on https://meme.maciejrosiak.me
 # Requirements
 
 `Python >= 3.7`
