@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Meme
 from django.contrib.auth.decorators import login_required
 
-
 # Create your views here.
 def meme_list(request):
     memes = Meme.objects.all().order_by('-publish_date')
