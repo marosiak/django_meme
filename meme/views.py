@@ -24,7 +24,7 @@ def add_meme(request):
         img = request.FILES.get('image', False)
         title = request.POST.get('title', False)
         if title:
-            if len(title) >= 15:
+            if len(title) >= 30:
                 return render(request, 'meme/meme_add.html', {'error': 'The title is too long'})
             if img:
                 Meme.objects.create(file=img, title=title, author=request.user)
