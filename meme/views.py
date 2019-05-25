@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def meme_list(request):
-    memes = Meme.objects.all()
+    memes = Meme.objects.all().order_by('-publish_date')
     return render(request, 'meme/meme_list.html', {'memes': memes})
 
 
