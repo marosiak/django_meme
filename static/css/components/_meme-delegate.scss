@@ -1,0 +1,32 @@
+.meme-delegate {
+  width: 50vw;
+  margin-bottom: 1.3rem;
+  margin-top: .7rem;
+  border-width: .1rem;
+  border-color: $primary-color;
+  border-style: solid;
+  font-family: 'Roboto', sans-serif;
+  color: $primary-color;
+  .meme-header {
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 3.8vh;
+    margin-top: 2vh;
+    h1 { // meme title
+      font-weight: 400;
+      margin-left: 1.2rem;
+    }
+    div { // date
+      margin-right: 1.2rem;
+      font-weight: 300;
+    }
+  }
+  h2 {
+    margin-top: 1.2vh;
+    margin-left: 1.2rem;
+    font-weight: 300;
+  }
+  img {
+    width: 50vw;
+  }
+}

@@ -389,6 +389,41 @@ nav.shrink ul li {
   }
 }
 
+.meme-delegate {
+  width: 50vw;
+  margin-bottom: 1.3rem;
+  margin-top: 0.7rem;
+  border-width: 0.1rem;
+  border-color: #3BA3FB;
+  border-style: solid;
+  font-family: "Roboto", sans-serif;
+  color: #3BA3FB;
+}
+.meme-delegate .meme-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.8vh;
+  margin-top: 2vh;
+}
+.meme-delegate .meme-header h1 {
+  font-weight: 400;
+  margin-left: 1.2rem;
+}
+.meme-delegate .meme-header div {
+  margin-right: 1.2rem;
+  font-weight: 300;
+}
+.meme-delegate h2 {
+  margin-top: 1.2vh;
+  margin-left: 1.2rem;
+  font-weight: 300;
+}
+.meme-delegate img {
+  width: 50vw;
+}
+
 html, body {
   margin: 0;
   padding: 0;
