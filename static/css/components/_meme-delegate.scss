@@ -18,7 +18,11 @@
     h1 { // meme title
       font-weight: 400;
       margin-left: 1.2rem;
-      font-size: 3vw;
+      font-size: 2.2vw;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 20vw;
       @include phone {
         font-size: 4vw;
       }
