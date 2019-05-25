@@ -390,7 +390,6 @@ nav.shrink ul li {
 }
 
 .meme-delegate {
-  width: 50vw;
   margin-bottom: 1.3rem;
   margin-top: 0.7rem;
   border-width: 0.1rem;
@@ -404,24 +403,57 @@ nav.shrink ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 3.8vh;
-  margin-top: 2vh;
+  height: 3.8vw;
+  margin-top: 2vw;
+}
+@media only screen and (max-width: 910px) {
+  .meme-delegate .meme-header {
+    height: 4.2vw;
+  }
 }
 .meme-delegate .meme-header h1 {
   font-weight: 400;
   margin-left: 1.2rem;
+  font-size: 3vw;
+}
+@media only screen and (max-width: 480px) {
+  .meme-delegate .meme-header h1 {
+    font-size: 4vw;
+  }
 }
 .meme-delegate .meme-header div {
   margin-right: 1.2rem;
   font-weight: 300;
+  font-size: 1.5vw;
+}
+@media only screen and (max-width: 480px) {
+  .meme-delegate .meme-header div {
+    font-size: 2.5vw;
+  }
 }
 .meme-delegate h2 {
   margin-top: 1.2vh;
   margin-left: 1.2rem;
   font-weight: 300;
+  font-size: 1.95vw;
+}
+@media only screen and (max-width: 480px) {
+  .meme-delegate h2 {
+    font-size: 2.95vw;
+  }
 }
 .meme-delegate img {
-  width: 50vw;
+  width: 45vw;
+}
+@media only screen and (max-width: 910px) {
+  .meme-delegate img {
+    width: 86vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .meme-delegate img {
+    width: 90vw;
+  }
 }
 
 html, body {
