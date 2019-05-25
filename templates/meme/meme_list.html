@@ -5,6 +5,9 @@
     {% for meme in memes %}
         <div class="meme" style="display:flex; justify-content: center">
             <div class="meme-delegate">
+                {% if is_stuff %}
+                    <a class="remove-button" href="{% url 'remove_meme' pk=meme.pk %}">Remove</a>
+                {% endif %}
                 <img src={{ meme.file.url }}>
                 <div class="meme-header">
                     <h1>{{ meme.title }}</h1>

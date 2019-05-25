@@ -7,6 +7,21 @@
   border-style: solid;
   font-family: 'Roboto', sans-serif;
   color: $primary-color;
+  position: relative;
+  .remove-button {
+    transition: all 150ms;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    text-decoration: none;
+    color: white;
+    background-color: $remove-button-color;
+    padding: 5px 15px;
+    border: black solid .15rem;
+    &:hover {
+      background-color: black;
+    }
+  }
   .meme-header {
     width: 100%;
     display: flex; align-items: center; justify-content: space-between;

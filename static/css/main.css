@@ -397,6 +397,21 @@ nav.shrink ul li {
   border-style: solid;
   font-family: "Roboto", sans-serif;
   color: #3BA3FB;
+  position: relative;
+}
+.meme-delegate .remove-button {
+  transition: all 150ms;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-decoration: none;
+  color: white;
+  background-color: #e20000;
+  padding: 5px 15px;
+  border: black solid 0.15rem;
+}
+.meme-delegate .remove-button:hover {
+  background-color: black;
 }
 .meme-delegate .meme-header {
   width: 100%;

@@ -6,7 +6,17 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def meme_list(request):
     memes = Meme.objects.all().order_by('-publish_date')
-    return render(request, 'meme/meme_list.html', {'memes': memes})
+    if request.user.is_staff:
+        return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': True})
+    else:
+        return render(request, 'meme/meme_list.html', {'memes': memes})
+
+
+def remove_meme(request, pk):
+    if request.user.is_staff:
+        meme = Meme.objects.filter(pk=pk)
+        meme.delete()
+    return redirect('meme_list')
 
 
 @login_required
