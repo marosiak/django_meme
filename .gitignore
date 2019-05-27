@@ -12,3 +12,5 @@ meme/migrations/
 *.lock
 
 sacret_key\.txt
+
+favorite/migrations/
