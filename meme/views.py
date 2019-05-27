@@ -2,13 +2,17 @@ from django.shortcuts import render, redirect
 from .models import Meme
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 def meme_list(request):
-    memes = Meme.objects.all().order_by('-publish_date')
-    if request.user.is_staff:
-        return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': True})
+    memes = Meme.objects.all()
+
+    if request.GET:
+        memes.filter(pk=request.GET['favourite'])
     else:
-        return render(request, 'meme/meme_list.html', {'memes': memes})
+        memes.order_by('-publish_date')
+
+    return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': request.user.is_staff})
 
 
 def remove_meme(request, pk):

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -11,8 +12,9 @@ class Meme(models.Model):
 
     # Relationship Fields
     author = models.ForeignKey(
-        'auth.User',
-        on_delete=models.CASCADE, related_name="memes",
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="memes",
     )
     file = models.ImageField(upload_to='memes/%Y%m%d')
 
