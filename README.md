@@ -8,10 +8,10 @@ You can test this website on https://meme.maciejrosiak.me
  - Uploading memes (image + title)
  - Removing memes (only as admin) from meme list
  - Responsible design
- 
- **TODO (will be released on Master @ 28.05.2019)**
  - Adding memes to favorite
- - Filtring memes basing on favorite ration
+ - Filtring favorite memes
+ 
+ ## TODO:
  - Counting how many users made meme favorite
 # Requirements
 
