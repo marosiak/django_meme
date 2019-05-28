@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Case, When, Value, Q, BooleanField
 from django.shortcuts import render, redirect
@@ -23,6 +22,15 @@ def meme_list(request):
 
     return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': request.user.is_staff})
 
+
+# yes, I'm copying this shit from above, I'll make ListView class in future, but rn I got no time..
+def favorite_list(request):
+    user = get_user_model().objects.get(pk=request.user.pk)
+
+    user_faviorites = user.favorite.memes.all()
+    user_faviorites.order_by('-publish_date')
+
+    return render(request, 'meme/meme_list.html', {'memes': user_faviorites, 'is_stuff': request.user.is_staff, 'favorite_view': True})
 
 def remove_meme(request, pk):
     if request.user.is_staff:

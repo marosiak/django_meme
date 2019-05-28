@@ -16,8 +16,16 @@
         <a class="add-button" href="{% url 'add_meme' %}"><i class="material-icons">add</i></a>
     </div>
     <ul>
-        <li active><a href="#">LATEST</a></li>
-        <li><a onclick="openFavourite()">FAVORITE</a></li>
+
+        {#      It's lazy solution, and I know it wont work for more elements, but well..       #}
+        {% if favorite_view %}
+            <li><a href="{% url 'meme_list' %}">LATEST</a></li>
+            <li active><a href="{% url 'favorite_list' %}">FAVORITE</a></li>
+        {% else %}
+            <li active><a href="{% url 'meme_list' %}">LATEST</a></li>
+            <li><a href="{% url 'favorite_list' %}">FAVORITE</a></li>
+        {% endif %}
+
     </ul>
 </nav>
 

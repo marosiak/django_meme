@@ -22,9 +22,14 @@
         <div class="meme" style="display:flex; justify-content: center">
             <div class="meme-delegate">
                 <i class="material-icons favourite" pk="{{ meme.pk }}" onclick="changeHearthState(this)">
-                    {% if meme.is_favorite %}favorite
+                    {% if meme.is_favorite %}
+                        favorite
                     {% else %}
-                        favorite_border
+                        {% if favorite_view %}
+                            favorite
+                        {% else %}
+                            favorite_border
+                        {% endif %}
                     {% endif %}
                 </i>
                 {% if is_stuff %}
