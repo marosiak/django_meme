@@ -1,15 +1,36 @@
-from django.shortcuts import render, redirect
-from .models import Meme
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.db.models import Case, When, Value, Q, BooleanField
+from django.shortcuts import render, redirect
+
+from .models import Meme
+
 
 # Create your views here.
 def meme_list(request):
-    memes = Meme.objects.all().order_by('-publish_date')
-    if request.user.is_staff:
-        return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': True})
-    else:
-        return render(request, 'meme/meme_list.html', {'memes': memes})
+    user = get_user_model().objects.get(pk=request.user.pk)
+    memes = Meme.objects.all()
+    memes.order_by('-publish_date')
 
+    user_faviorites = user.favorite.memes.all()
+    memes = (Meme.objects.all().
+        annotate(
+        is_favorite=Case(
+            When(condition=Q(pk__in=user_faviorites), then=Value(True)), default=Value(False),
+            output_field=BooleanField())
+    ))
+
+    return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': request.user.is_staff})
+
+
+# yes, I'm copying this shit from above, I'll make ListView class in future, but rn I got no time..
+def favorite_list(request):
+    user = get_user_model().objects.get(pk=request.user.pk)
+
+    user_faviorites = user.favorite.memes.all()
+    user_faviorites.order_by('-publish_date')
+
+    return render(request, 'meme/meme_list.html', {'memes': user_faviorites, 'is_stuff': request.user.is_staff, 'favorite_view': True})
 
 def remove_meme(request, pk):
     if request.user.is_staff:

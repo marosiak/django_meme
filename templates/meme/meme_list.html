@@ -1,10 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <script>
+        function changeHearthState(element) {
+            let action;
+            if (element.innerHTML.includes("favorite_border")) {
+                element.innerHTML = "favorite";
+                action = "add";
+            } else {
+                element.innerHTML = "favorite_border";
+                action = "remove";
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/favorite/' + action + '/' + element.getAttribute('pk'),
+            });
+        }
 
+    </script>
     {% for meme in memes %}
         <div class="meme" style="display:flex; justify-content: center">
             <div class="meme-delegate">
+                <i class="material-icons favourite" pk="{{ meme.pk }}" onclick="changeHearthState(this)">
+                    {% if meme.is_favorite %}
+                        favorite
+                    {% else %}
+                        {% if favorite_view %}
+                            favorite
+                        {% else %}
+                            favorite_border
+                        {% endif %}
+                    {% endif %}
+                </i>
                 {% if is_stuff %}
                     <a class="remove-button" href="{% url 'remove_meme' pk=meme.pk %}">Remove</a>
                 {% endif %}

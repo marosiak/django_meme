@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'meme',
+    'favorite'
 
 ]
 
@@ -99,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTH_USER_MODEL = 'favorite.UserExtension'
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 

@@ -8,11 +8,36 @@
   font-family: 'Roboto', sans-serif;
   color: $primary-color;
   position: relative;
+
+  .material-icons {
+    position: absolute;
+    left: 1vw;
+    bottom: 9vw;
+    font-size: 2.5vw;
+    @include circle-button-shadow(15px);
+    @include tablet {
+      font-size: 4vw;
+    }
+    @include phone {
+      font-size: 6.5vw;
+      left: calc(50% - 5vw);
+    }
+    background-color: #e74c3c;
+    padding: .79rem .79rem;
+    border-radius: 100%;
+    color: white;
+    transition: all 150ms;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      background-color: #c0392b;
+    }
+  }
   .remove-button {
     transition: all 150ms;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 3vw;
+    right: 3vw;
     text-decoration: none;
     color: white;
     background-color: $remove-button-color;
