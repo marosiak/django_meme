@@ -19,4 +19,4 @@ class Meme(models.Model):
     file = models.ImageField(upload_to='memes/%Y%m%d')
 
     def __str__(self):
-        return self.name
+        return self.title

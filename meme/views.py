@@ -1,16 +1,25 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
-from .models import Meme
 from django.contrib.auth.decorators import login_required
+from django.db.models import Case, When, Value, Q, BooleanField
+from django.shortcuts import render, redirect
+
+from .models import Meme
 
 
 # Create your views here.
 def meme_list(request):
+    user = get_user_model().objects.get(pk=request.user.pk)
     memes = Meme.objects.all()
+    memes.order_by('-publish_date')
 
-    if request.GET:
-        memes.filter(pk=request.GET['favourite'])
-    else:
-        memes.order_by('-publish_date')
+    user_faviorites = user.favorite.memes.all()
+    memes = (Meme.objects.all().
+        annotate(
+        is_favorite=Case(
+            When(condition=Q(pk__in=user_faviorites), then=Value(True)), default=Value(False),
+            output_field=BooleanField())
+    ))
 
     return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': request.user.is_staff})
 
