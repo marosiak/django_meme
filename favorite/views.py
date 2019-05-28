@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from favorite.models import FavoriteCollection
 from meme.models import Meme
 
-
 # Create your views here.
 
 
