@@ -7,10 +7,7 @@ __pycache__/
 
 media/
 
-meme/migrations/
-
 *.lock
 
 sacret_key\.txt
 
-favorite/migrations/
