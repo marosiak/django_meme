@@ -35,7 +35,9 @@ def favorite_list(request):
     user_faviorites = user.favorite.memes.all()
     user_faviorites.order_by('-publish_date')
 
-    return render(request, 'meme/meme_list.html', {'memes': user_faviorites, 'is_stuff': request.user.is_staff, 'favorite_view': True})
+    return render(request, 'meme/meme_list.html',
+                  {'memes': user_faviorites, 'is_stuff': request.user.is_staff, 'favorite_view': True})
+
 
 def remove_meme(request, pk):
     if request.user.is_staff:
@@ -46,6 +48,7 @@ def remove_meme(request, pk):
 
 @login_required
 def add_meme(request):
+    allowed_content_types = ['image/jpeg', 'image/png']
     if request.POST:
         img = request.FILES.get('image', False)
         title = request.POST.get('title', False)
@@ -53,8 +56,11 @@ def add_meme(request):
             if len(title) >= 30:
                 return render(request, 'meme/meme_add.html', {'error': 'The title is too long'})
             if img:
-                Meme.objects.create(file=img, title=title, author=request.user)
-                return redirect('meme_list')
+                if img.content_type in allowed_content_types:
+                    Meme.objects.create(file=img, title=title, author=request.user)
+                    return redirect('meme_list')
+                else:
+                    return render(request, 'meme/meme_add.html', {'error': 'Wrong file format, please upload png/jpeg'})
             else:
                 return render(request, 'meme/meme_add.html', {'error': 'Please select file'})
         else:

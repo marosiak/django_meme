@@ -18,6 +18,7 @@ class Meme(models.Model):
     )
     file = models.ImageField(upload_to='memes/%Y%m%d')
 
+
     class Meta:
         ordering = ['-publish_date']
 
