@@ -17,6 +17,7 @@ class MemeListView(ListView):
         return context
 
 
+# Well, I know some things are duplicated, I'm trying to figure out how to solve it by using base class
 class AllMemesListView(MemeListView):
     def get_queryset(self):
         memes = Meme.objects.all()
@@ -30,6 +31,7 @@ class AllMemesListView(MemeListView):
                 for fav in user_faviorites:
                     if fav == meme:
                         meme.is_favorite = True
+        memes.order_by('-publish_date')
         return memes
 
 
@@ -39,7 +41,9 @@ class FavoriteMemesView(MemeListView):
         if not user.favorite:
             user.favorite = FavoriteCollection.objects.create()
             user.save()
-        return user.favorite.memes.all()
+        fav = user.favorite.memes.all()
+        fav.order_by('-publish_date')
+        return fav
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
