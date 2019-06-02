@@ -1,42 +1,50 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
-from django.db.models import Case, When, Value, Q, BooleanField
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 
 from favorite.models import FavoriteCollection
 from .models import Meme
 
 
-# Create your views here.
-def meme_list(request):
-    memes = Meme.objects.all()
-    memes.order_by('-publish_date')
-    if request.user.is_authenticated:
-        user = get_user_model().objects.get(pk=request.user.pk)
+class MemeListView(ListView):
+    template_name = 'meme/meme_list.html'
+    model = Meme
+    context_object_name = 'memes'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_stuff'] = self.request.user.is_staff
+        return context
+
+
+class AllMemesListView(MemeListView):
+    def get_queryset(self):
+        memes = Meme.objects.all()
+        if self.request.user.is_authenticated:
+            for meme in memes:
+                user = get_user_model().objects.get(pk=self.request.user.pk)
+                if not user.favorite:
+                    user.favorite = FavoriteCollection.objects.create()
+                    user.save()
+                user_faviorites = user.favorite.memes.all()
+                for fav in user_faviorites:
+                    if fav == meme:
+                        meme.is_favorite = True
+        return memes
+
+
+class FavoriteMemesView(MemeListView):
+    def get_queryset(self):
+        user = get_user_model().objects.get(pk=self.request.user.pk)
         if not user.favorite:
             user.favorite = FavoriteCollection.objects.create()
             user.save()
-        user_faviorites = user.favorite.memes.all()
-        memes = (Meme.objects.all().
-            annotate(
-            is_favorite=Case(
-                When(condition=Q(pk__in=user_faviorites), then=Value(True)), default=Value(False),
-                output_field=BooleanField())
-        ))
+        return user.favorite.memes.all()
 
-    return render(request, 'meme/meme_list.html', {'memes': memes, 'is_stuff': request.user.is_staff})
-
-
-# yes, I'm copying this shit from above, I'll make ListView class in future, but rn I got no time..
-@login_required
-def favorite_list(request):
-    user = get_user_model().objects.get(pk=request.user.pk)
-
-    user_faviorites = user.favorite.memes.all()
-    user_faviorites.order_by('-publish_date')
-
-    return render(request, 'meme/meme_list.html',
-                  {'memes': user_faviorites, 'is_stuff': request.user.is_staff, 'favorite_view': True})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['favorite_view'] = True
+        return context
 
 
 def remove_meme(request, pk):
@@ -46,7 +54,6 @@ def remove_meme(request, pk):
     return redirect('meme_list')
 
 
-@login_required
 def add_meme(request):
     allowed_content_types = ['image/jpeg', 'image/png']
     if request.POST:
