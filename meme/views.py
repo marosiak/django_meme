@@ -1,6 +1,5 @@
-from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView, RedirectView
 
 from favorite.models import FavoriteCollection
 from .models import Meme
@@ -56,11 +55,15 @@ class FavoriteMemesView(MemeListView):
         return context
 
 
-def remove_meme(request, pk):
-    if request.user.is_staff:
-        meme = Meme.objects.filter(pk=pk)
+class RemoveMeme(RedirectView):
+    permanent = False
+    query_string = True
+    pattern_name = 'meme_list'
+
+    def get_redirect_url(self, *args, **kwargs):
+        meme = get_object_or_404(Meme, pk=kwargs.pop('pk'))
         meme.delete()
-    return redirect('meme_list')
+        return super().get_redirect_url(*args, **kwargs)
 
 
 def add_meme(request):
