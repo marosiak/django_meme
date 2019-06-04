@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
+
 
 def sign_up(request):
     if request.POST:
@@ -11,9 +11,11 @@ def sign_up(request):
         if username and password and password_confirm:
             if password == password_confirm:
                 if len(password) < 6:
-                    return render(request, 'registration/sign_up.html', {'error': 'Password must be atleast 6 characters length'})
+                    return render(request, 'registration/sign_up.html',
+                                  {'error': 'Password must be atleast 6 characters length'})
                 if len(username) < 4:
-                    return render(request, 'registration/sign_up.html', {'error': 'Username must be atleast 4 characters length'})
+                    return render(request, 'registration/sign_up.html',
+                                  {'error': 'Username must be atleast 4 characters length'})
                 if get_user_model().objects.filter(username=username).exists():
                     return render(request, 'registration/sign_up.html', {'error': 'This user already exists'})
                 else:

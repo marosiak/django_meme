@@ -11,33 +11,38 @@ class MemeListView(ListView):
     model = Meme
     context_object_name = 'memes'
 
+    def _get_memes(self):
+        memes = Meme.objects.all()
+        user = self.request.user
+        if user.is_authenticated:
+            if not user.favorite:
+                user.favorite = FavoriteCollection.objects.create()
+                user.save()
+        memes.order_by('-publish_date')
+        return memes
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_stuff'] = self.request.user.is_staff
         return context
 
 
-# Well, I know some things are duplicated, I'm trying to figure out how to solve it by using base class
 class AllMemesListView(MemeListView):
     def get_queryset(self):
-        memes = Meme.objects.all()
-        if self.request.user.is_authenticated:
+        user = self.request.user
+        memes = self._get_memes()
+        if user.is_authenticated:
             for meme in memes:
-                user = get_user_model().objects.get(pk=self.request.user.pk)
-                if not user.favorite:
-                    user.favorite = FavoriteCollection.objects.create()
-                    user.save()
                 user_faviorites = user.favorite.memes.all()
                 for fav in user_faviorites:
                     if fav == meme:
                         meme.is_favorite = True
-        memes.order_by('-publish_date')
         return memes
 
 
 class FavoriteMemesView(MemeListView):
     def get_queryset(self):
-        user = get_user_model().objects.get(pk=self.request.user.pk)
+        user = self.request.user
         if not user.favorite:
             user.favorite = FavoriteCollection.objects.create()
             user.save()
