@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
 from django.views.generic import ListView, RedirectView
 
 from favorite.models import FavoriteCollection
@@ -66,9 +67,12 @@ class RemoveMeme(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-def add_meme(request):
-    allowed_content_types = ['image/jpeg', 'image/png']
-    if request.POST:
+class AddMeme(View):
+    def get(self, request):
+        return render(request, 'meme/meme_add.html')
+
+    def post(self, request):
+        allowed_content_types = ['image/jpeg', 'image/png']
         img = request.FILES.get('image', False)
         title = request.POST.get('title', False)
         if title:
@@ -79,10 +83,9 @@ def add_meme(request):
                     Meme.objects.create(file=img, title=title, author=request.user)
                     return redirect('meme_list')
                 else:
-                    return render(request, 'meme/meme_add.html', {'error': 'Wrong file format, please upload png/jpeg'})
+                    return render(request, 'meme/meme_add.html',
+                                  {'error': 'Wrong file format, please upload png/jpeg'})
             else:
                 return render(request, 'meme/meme_add.html', {'error': 'Please select file'})
         else:
             return render(request, 'meme/meme_add.html', {'error': 'Please enter title'})
-
-    return render(request, 'meme/meme_add.html')
